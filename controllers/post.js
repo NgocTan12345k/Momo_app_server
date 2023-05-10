@@ -14,11 +14,11 @@ exports.addPost = async (req, res, next) => {
       status,
     } = req.body;
     const photos = req.files;
-    console.log("photos-->", photos);
+    // console.log("photos-->", photos);
     if (Array.isArray(photos) && photos.length > 0) {
       const path_photos = photos.map((item) => item.path);
       const saved_path_photos = path_photos.map((item) =>
-        item.replace("public", "https://momo-app-server.onrender.com")
+        item.replace("public", "http://localhost:5005")
       );
       const newPost = new Post({
         user_id: user_id,
@@ -31,7 +31,7 @@ exports.addPost = async (req, res, next) => {
         status: status,
         photos: saved_path_photos,
       });
-      console.log("newPost-->", newPost);
+      // console.log("newPost-->", newPost);
       const savedPost = await newPost.save();
       res.status(200).json({ message: "add post successful", savedPost });
     } else {
@@ -97,7 +97,7 @@ exports.deletePost = async (req, res, next) => {
     const deletedPost = await Post.findById(id);
     // console.log("deletedPost-->", deletedPost);
     const deleted_photos = deletedPost.photos.map((item) =>
-      item.replace("https://momo-app-server.onrender.com", "public")
+      item.replace("http://localhost:5005/", "public")
     );
     // console.log("deleted_photos-->", deleted_photos);
     fileHelper.deleteFile(deleted_photos);
