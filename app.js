@@ -16,7 +16,11 @@ const postRouter = require("./routes/post");
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    // origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: [
+      "https://momo-app-client.vercel.app",
+      "https://momo-app-admin.vercel.app",
+    ],
   })
 );
 

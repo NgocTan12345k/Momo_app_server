@@ -18,7 +18,7 @@ exports.addPost = async (req, res, next) => {
     if (Array.isArray(photos) && photos.length > 0) {
       const path_photos = photos.map((item) => item.path);
       const saved_path_photos = path_photos.map((item) =>
-        item.replace("public", "http://localhost:5005")
+        item.replace("public", "https://momo-app-server.onrender.com")
       );
       const newPost = new Post({
         user_id: user_id,
@@ -97,7 +97,7 @@ exports.deletePost = async (req, res, next) => {
     const deletedPost = await Post.findById(id);
     // console.log("deletedPost-->", deletedPost);
     const deleted_photos = deletedPost.photos.map((item) =>
-      item.replace("http://localhost:5005", "public")
+      item.replace("https://momo-app-server.onrender.com", "public")
     );
     // console.log("deleted_photos-->", deleted_photos);
     fileHelper.deleteFile(deleted_photos);
