@@ -12,7 +12,7 @@ exports.getAllUser = async (req, res, next) => {
 
 exports.addUser = async (req, res, next) => {
   try {
-    const { fullName, email, password, status, role } = req.body;
+    const { fullName, email, password, role } = req.body;
 
     const user = await User.findOne({ email: email });
     if (user) {
@@ -24,7 +24,7 @@ exports.addUser = async (req, res, next) => {
           email: email,
           password: hash,
           role: role,
-          status: status,
+          status: "inactive",
         });
         const savedUser = await newUser.save();
         res.status(201).json({ message: "add user successful", savedUser });
