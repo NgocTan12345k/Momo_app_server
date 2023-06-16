@@ -53,7 +53,7 @@ exports.register = async (req, res, next) => {
           );
           const url = `http://localhost:3000/confirmEmail/${emailToken}`;
           await transporter.sendMail({
-            from: "tanbnfx15317@funix.edu.vn",
+            from: "tanbn@funix.edu.vn",
             to: email,
             subject: "Confirm Email",
             html: `<p>Please click this email to confirm your email: <a href="${url}">${url}</a></p>`,
@@ -160,7 +160,7 @@ exports.forgotPassword = async (req, res, next) => {
       );
 
       await transporter.sendMail({
-        from: "tanbnfx15317@funix.edu.vn",
+        from: "tanbn@funix.edu.vn",
         to: email,
         subject: "Reset password successful!",
         html:
