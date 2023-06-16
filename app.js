@@ -36,7 +36,10 @@ app.use(bodyParser.json());
 
 // connect MongoDb
 mongoose
-  .connect(process.env.MONGO_URL)
+  // .connect(process.env.MONGO_URL)
+  .connect(
+    "mongodb+srv://Skull:anhtanhl12345k@cluster0.bevlxni.mongodb.net/donation_app?retryWrites=true&w=majority"
+  )
   .then(() => {
     console.log("Database connection successful!");
   })
