@@ -40,7 +40,7 @@ exports.addDonation = async (req, res, next) => {
       "<p>Mong bạn sẽ tiếp tục đồng hành cũng chương trình trong thời gian tới! </p>";
 
     await transporter.sendMail({
-      from: "tanbn@funix.edu.vn",
+      from: "tanbnfx15317@funix.edu.vn",
       to: email,
       subject: "Bạn đã quyên góp thành công!",
       html: htmlResult,
